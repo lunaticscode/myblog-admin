@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 const { _LoginLayout, _LoginTitle, _LoginInputWrapper, _LoginInput, _LoginButton } = require('../styles/_components/_Login');
+const { adminAuth } = require('../api_util/auth');
+const IS_DEBUG = process.env.IS_DEBUG;
+
 interface AdminAppProps {
     authResult: () => void
 } 
 const Login : React.FC <AdminAppProps> = ( { authResult } ) => {
 
     const [ inputCode, setInputCode ] = useState<string>( null );
-    
-    const onChangeInputCode = (e:any) => {
-        console.log(e.target.value);
+    useEffect( () => {
+        
+    })
+    const onChangeInputCode = ( e:any ) => {
         const code = e.target.value;
         setInputCode( code );
     }
@@ -17,9 +21,10 @@ const Login : React.FC <AdminAppProps> = ( { authResult } ) => {
         if( !inputCode ) { 
             return; 
         }
-        console.log(inputCode);
+        IS_DEBUG && console.log(inputCode);
+        IS_DEBUG && console.log(adminAuth(inputCode));
     }
-    
+
     return (
         <_LoginLayout>
             <_LoginTitle>
