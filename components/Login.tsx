@@ -5,6 +5,21 @@ interface AdminAppProps {
 } 
 const Login : React.FC <AdminAppProps> = ( { authResult } ) => {
 
+    const [ inputCode, setInputCode ] = useState<string>( null );
+    
+    const onChangeInputCode = (e:any) => {
+        console.log(e.target.value);
+        const code = e.target.value;
+        setInputCode( code );
+    }
+
+    const onClickLoginButton = ( ) => {
+        if( !inputCode ) { 
+            return; 
+        }
+        console.log(inputCode);
+    }
+    
     return (
         <_LoginLayout>
             <_LoginTitle>
@@ -15,10 +30,13 @@ const Login : React.FC <AdminAppProps> = ( { authResult } ) => {
                     <_LoginInput 
                         placeholder={"코드 입력"} 
                         type={"password"}
+                        onChange={ onChangeInputCode }
                     />
             </_LoginInputWrapper>
             <br/>
-            <_LoginButton>
+            <_LoginButton
+                onClick ={ onClickLoginButton }
+            >
                 Enter
             </_LoginButton>
         </_LoginLayout>
