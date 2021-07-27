@@ -23,6 +23,7 @@ const _LoginInput = styled.input`
     border: none;
     text-align: center;
     border-bottom:1px solid silver;
+    
     &.active{
         border-bottom:1px solid skyblue;
     }

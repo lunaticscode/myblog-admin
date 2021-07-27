@@ -4,7 +4,7 @@ const Index : React.FC = ({ }) => {
   
   return(
     <>
-    
+    asd
     </>
   )
 }

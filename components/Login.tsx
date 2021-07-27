@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from 'react';
 const { _LoginLayout, _LoginTitle, _LoginInputWrapper, _LoginInput, _LoginButton } = require('../styles/_components/_Login');
-const { adminAuth } = require('../api_util/auth');
 const IS_DEBUG = process.env.IS_DEBUG;
 
 interface AdminAppProps {
-    authResult: () => void
-} 
-const Login : React.FC <AdminAppProps> = ( { authResult } ) => {
+    authResult: ( id: string, pw: string ) => Promise<boolean>
+}
+ 
+const Login : React.FC <AdminAppProps> = ( { authResult, } ) => {
 
-    const [ inputCode, setInputCode ] = useState<string>( null );
+    const [ inputId, setInputId ] = useState<string>(null);
+    const [ inputPw, setInputPw ] = useState<string>(null);
+
     useEffect( () => {
-        
+        console.log( 'IS_DEBUG => ', IS_DEBUG );
     })
-    const onChangeInputCode = ( e:any ) => {
-        const code = e.target.value;
-        setInputCode( code );
-    }
 
-    const onClickLoginButton = ( ) => {
-        if( !inputCode ) { 
-            return; 
-        }
-        IS_DEBUG && console.log(inputCode);
-        IS_DEBUG && console.log(adminAuth(inputCode));
+    const onChangeInputId = ( e: any ) => {
+        const id = e.target.value.toString();
+        setInputId( id );
     }
-
+    const onChangeInputPassword = ( e: any ) => {
+        const pw = e.target.value.toString();
+        setInputPw( pw );
+    }
+            
+    const onClickLoginButton = async () => { 
+        const result = await authResult( inputId, inputPw ); 
+    }
+    
     return (
         <_LoginLayout>
             <_LoginTitle>
@@ -33,9 +36,15 @@ const Login : React.FC <AdminAppProps> = ( { authResult } ) => {
             <br/>
             <_LoginInputWrapper>
                     <_LoginInput 
-                        placeholder={"코드 입력"} 
+                        placeholder={"ID"} 
+                        type={"text"}
+                        onChange={ onChangeInputId }
+                    />
+                    <br/><br/>
+                    <_LoginInput 
+                        placeholder={"PW"} 
                         type={"password"}
-                        onChange={ onChangeInputCode }
+                        onChange={ onChangeInputPassword }
                     />
             </_LoginInputWrapper>
             <br/>
