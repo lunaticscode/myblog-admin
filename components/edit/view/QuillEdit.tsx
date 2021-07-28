@@ -2,19 +2,8 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
 const Quill = dynamic( async() => await import('react-quill'), {ssr: false} ); 
-
 const QuillEdit:React.FC = () => {
-    const title_modules = {
-        toolbar: [
-          [{ 'header': [1, 2, true] }],
-          //['bold', 'italic', 'underline','strike', 'blockquote'],
-          //[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-          ['link', 'image'],
-          [{ 'color': [] }],          // dropdown with defaults from theme
-          ['clean']
-        ],
-    }
-
+   
     const modules = {
         toolbar: [
           [{ 'header': [ 2, 3, true] }],
@@ -24,7 +13,7 @@ const QuillEdit:React.FC = () => {
           [{ 'align': [] }, { 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
           ['clean']
         ],
-      }
+    }
     
    const formats = [
         //'font',
@@ -33,24 +22,20 @@ const QuillEdit:React.FC = () => {
         'list', 'bullet', 'indent',
         'link', 'image',
         'align', 'color', 'background',        
-      ]  
+    ]  
 
     return (
         <>
-        <div style={{height:'200px'}} >
-        <Quill
-              style={{height:'200px'}}
-              theme="snow"
-              modules={title_modules}
-              formats={formats} 
-          />
-        </div>
-        <div style={{height:'calc( 100vh - 200px )'}}>
+        
+        <div style={{height:'calc(100vh - 300px)'}}>
+          <div className={"contentEdit_header"} >Content.</div>
           <Quill
-              style={{height: 'calc( 100vh - 245px )', minWidth: '630px'}}
+          //height: '100%',
+              style={{ height:'100%', width:'100%' }}
               theme="snow"
               modules={modules}
-              formats={formats} 
+              formats={formats}
+               
           />
         </div>
         </>

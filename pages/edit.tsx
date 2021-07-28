@@ -1,10 +1,10 @@
 import React, {useEffect, useState } from 'react';
-import QuillEdit from '../components/edit/QuillEdit';
+import EditContainer from '../components/edit/container/EditContainer';
 const Edit : React.FC = ({ }) => {
 
   return(
     <>
-      <QuillEdit/>
+      <EditContainer/>
     </>
   )
 }
