@@ -12,7 +12,8 @@ export const adminLogin = ( async ( id: string, pw: string ) => {
         body: JSON.stringify( { id: id, pw: pw } ),
         headers: { 'Content-Type': 'application/json' }
     })
-    .then( res => res.json() ).then( res => { result = res } );
+    .then( res => res.json() ).then( res => { result = res } )
+    .catch( err => {console.log( err ); result = { res: 50000, msg: 'fetch-error' } } );
     setToken( result['token'] );
     return result;
 });

@@ -6,8 +6,8 @@ export const authToken = ( async ( token: string ) => {
     await fetch( API_URL + API_PATH.AUTH.TOKEN, {
         method: 'get',
         headers: { 'Content-Type': 'application', 'Authorization': token },
-    }).then( res => res.json() ).catch( err => { console.log(err); result = { res: 50000, msg: 'fetch-error' } } )
-    .then( res => { result = res } );
+    }).then( res => res.json() ).then( res => { result = res } )
+    .catch( err => { console.log('error', err); result = { res: 50000, msg: 'fetch-error' } } )
     return result;
 });
 

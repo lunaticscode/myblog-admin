@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.bubble.css';
+import { editTitleState } from '../../../recoil/status';
+import { useRecoilState } from 'recoil';
+
 const Quill = dynamic( async() => await import('react-quill'), {ssr: false} ); 
 
 const TitleQuillEdit: React.FC = () => {
+
+    const [ editTitleValue, setEditTitleValue ] = useRecoilState<string>(editTitleState)
+
     const title_modules = {
         toolbar: [
           [{ 'header': [1, 2, true] }],
@@ -21,7 +27,12 @@ const TitleQuillEdit: React.FC = () => {
         'list', 'bullet', 'indent',
         'link', 'image',
         'align', 'color', 'background',        
-    ]  
+    ]
+    
+    const onChangeEditTitle = ( html: string ) => {
+        //console.log(html);
+        setEditTitleValue( html );
+    }
     return(
         <>
         <div style={{height:'100px', marginBottom:'40px'}} >
@@ -31,6 +42,7 @@ const TitleQuillEdit: React.FC = () => {
            <Quill
               style={{height:'100px', width:'100%', border:'none !important'}}
               theme="bubble"
+              onChange ={ onChangeEditTitle }
               modules={title_modules}
               formats={title_formats} 
           /> 

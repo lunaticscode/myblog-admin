@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import Login from '../components/Login';
 import { authToken } from '../api_util/auth'
 import { adminLogin } from '../api_util/login';
-
+import { RecoilRoot } from 'recoil';
 const AdminApp = ({ Component, pageProps } : AppProps, ) => {
 
   console.log(pageProps);
@@ -22,7 +22,8 @@ const AdminApp = ({ Component, pageProps } : AppProps, ) => {
     if( token ){
       const authResult = await authToken( token );
       if( authResult['res'] === 20000 ){ setIsAuth( true ); }
-      else{ setIsAuth(false); }
+      else if( authResult['res'] === 50000 ){ alert(authResult['msg']); setIsAuth(false) }
+      else { setIsAuth(false); }
     }
     else{
       setIsAuth(false);
@@ -34,9 +35,7 @@ const AdminApp = ({ Component, pageProps } : AppProps, ) => {
     console.log(result);
     if( result['res'] === 20000 ){
       setIsAuth(true);   
-    }else{
-      setIsAuth(false);
-    }
+    }else{ setIsAuth(false); }
     return true;   
   }
   const IS_DEBUG = process.env.IS_DEBUG
@@ -49,11 +48,12 @@ const AdminApp = ({ Component, pageProps } : AppProps, ) => {
               authResult = { authResult }
             />
             :
+            <RecoilRoot>
             <Component 
             {...pageProps}
             IS_DEBUG = { IS_DEBUG }
-                       
             />
+            </RecoilRoot>
           }
        
 

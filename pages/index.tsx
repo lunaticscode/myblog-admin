@@ -1,10 +1,14 @@
 import React, {useEffect, useState } from 'react';
-
-const Index : React.FC = ({ }) => {
+import Link from 'next/link';
+const Index : React.FC = () => {
   
-  return(
+  return( 
     <>
-    asd
+      <Link
+        href="/edit"
+      >
+      글쓰기
+      </Link>  
     </>
   )
 }

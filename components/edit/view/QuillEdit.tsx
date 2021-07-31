@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import { editContentState } from '../../../recoil/status';
+import { useRecoilState } from 'recoil';
 const Quill = dynamic( async() => await import('react-quill'), {ssr: false} ); 
 const QuillEdit:React.FC = () => {
-   
+    const [ editContentValue, setEditContentValue ] = useRecoilState<string>(editContentState);
+    
     const modules = {
         toolbar: [
           [{ 'header': [ 2, 3, true] }],
@@ -24,6 +27,7 @@ const QuillEdit:React.FC = () => {
         'align', 'color', 'background',        
     ]  
 
+    const onChangeEditContent = ( html: string ) => { setEditContentValue( html ); }
     return (
         <>
         
@@ -33,6 +37,7 @@ const QuillEdit:React.FC = () => {
           //height: '100%',
               style={{ height:'100%', width:'100%' }}
               theme="snow"
+              onChange={ onChangeEditContent }
               modules={modules}
               formats={formats}
                

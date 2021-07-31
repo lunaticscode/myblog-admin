@@ -49,8 +49,10 @@ const _EditActionBarLayout = styled.div<HTMLDivElement>`
     background: gray;
     line-height: 58px;
 `
-
-const _EditActionButton = styled.div<HTMLDivElement>`
+interface _EditActionButtonProps {
+    isLoading: boolean;
+}
+const _EditActionButton = styled.div<_EditActionButtonProps>`
     line-height: initial;
     width:100px;
     padding:5px 0px;
@@ -69,6 +71,15 @@ const _EditActionButton = styled.div<HTMLDivElement>`
         color: skyblue;
         cursor: pointer;
     }
+    ${ props => ( props.isLoading ) && css `
+        &:hover{
+            cursor: progress;
+            border: 1px solid silver;
+            background: silver;
+            color:gray; 
+            font-weight: 400;
+        }
+    `}
 `
 
 module.exports = { 
