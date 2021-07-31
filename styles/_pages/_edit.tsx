@@ -27,6 +27,7 @@ const _EditPageWriteLayout = styled.div<HTMLDivElement>`
         text-indent: 15px;
         box-shadow: 0px 1px 4px silver;
     }
+
     div.ql-toolbar.ql-snow{
         border:none;
         //border-bottom:1px solid #eeeeee;
@@ -103,7 +104,12 @@ const _EditConfirmContentLayout = styled.div<HTMLDivElement>`
     }
 `
 
+const _ProfileEditLayout = styled.div<HTMLDivElement>`
+    padding:15px;
+`
+
+
 module.exports = { 
     _EditPageLayout, _EditPageWriteLayout, _EditPageConfirmLayout, _EditActionBarLayout,
-    _EditActionButton, _EditConfirmTitleLayout, _EditConfirmContentLayout
+    _EditActionButton, _EditConfirmTitleLayout, _EditConfirmContentLayout, _ProfileEditLayout
 }

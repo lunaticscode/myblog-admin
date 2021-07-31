@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.bubble.css';
-import { editTitleHtmlState } from '../../../recoil/status';
+import { editTitleHtmlState } from '../../../../recoil/state/editState';
 import { useRecoilState } from 'recoil';
 
 const Quill = dynamic( async() => await import('react-quill'), {ssr: false} ); 

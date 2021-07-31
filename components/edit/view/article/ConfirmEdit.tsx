@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
-import { editResultState } from '../../../recoil/status'
+import { editResultState } from '../../../../recoil/state/editState'
 import { useRecoilValue } from 'recoil'
-const { _EditPageConfirmLayout, _EditConfirmTitleLayout, _EditConfirmContentLayout } = require('../../../styles/_pages/_edit')
+const { _EditPageConfirmLayout, _EditConfirmTitleLayout, _EditConfirmContentLayout } = require('../../../../styles/_pages/_edit')
 
 const ConfirmEdit:React.FC = () => {
     const _editResultState = useRecoilValue( editResultState );
@@ -19,7 +19,7 @@ const ConfirmEdit:React.FC = () => {
     }, [_editResultState] )
 
     return (        
-        <_EditPageConfirmLayout>
+        <>
 
             <_EditConfirmTitleLayout>
                 <div id="title" ref={titleLayout}/>
@@ -29,7 +29,7 @@ const ConfirmEdit:React.FC = () => {
                 <div id="content" ref={contentLayout} />
             </_EditConfirmContentLayout>
             
-        </_EditPageConfirmLayout>
+        </>
     )
 }
 

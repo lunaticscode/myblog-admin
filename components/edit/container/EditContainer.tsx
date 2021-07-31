@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import QuillEdit from '../view/QuillEdit';
-import ConfirmEdit from '../view/ConfirmEdit';
-import ActionBar from '../view/ActionBar';
-import TitleQuillEdit from '../view/TitleQuillEdit';
+import QuillEdit from '../view/article/QuillEdit';
+import ConfirmEdit from '../view/article/ConfirmEdit';
+import ActionBar from '../view/article/ActionBar';
+import TitleQuillEdit from '../view/article/TitleQuillEdit';
 import { useRecoilValue, selector } from 'recoil';
 
-const { _EditPageLayout,  _EditPageWriteLayout,  } = require ('../../../styles/_pages/_edit');
+const { _EditPageLayout,  _EditPageWriteLayout, _EditPageConfirmLayout,  } = require ('../../../styles/_pages/_edit');
 const sleep = async() => {
   return await new Promise(( resolve, reject ) => {
     setTimeout( () => {
@@ -32,12 +32,15 @@ const EditContainer:React.FC = () => {
     return (
           <>
         <_EditPageLayout> 
+          
           <_EditPageWriteLayout>
               <TitleQuillEdit/>
               <QuillEdit/>                
           </_EditPageWriteLayout>
-            
-              <ConfirmEdit/>
+
+          <_EditPageConfirmLayout>
+            <ConfirmEdit/> 
+          </_EditPageConfirmLayout>
             
         </_EditPageLayout>
         

@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-const { _EditActionBarLayout, _EditActionButton } = require('../../../styles/_pages/_edit');
+const { _EditActionBarLayout, _EditActionButton } = require('../../../../styles/_pages/_edit');
 
 interface ActionBarProps {
     isLoading: boolean;
     onClickEditSaveBtn: () => void; 
     onClickEditTmpSaveBtn: () => void;
 }
+
 const ActionBar:React.FC <ActionBarProps> = ({ isLoading, onClickEditSaveBtn, onClickEditTmpSaveBtn }) => {
 
     return(
@@ -24,6 +25,7 @@ const ActionBar:React.FC <ActionBarProps> = ({ isLoading, onClickEditSaveBtn, on
                 </_EditActionButton>
         </_EditActionBarLayout>
     )
+    
 }
 
 export default ActionBar;

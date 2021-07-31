@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import { editContentHtmlState } from '../../../recoil/status';
+import { editContentHtmlState } from '../../../../recoil/state/editState';
 import { useRecoilState } from 'recoil';
 const Quill = dynamic( async() => await import('react-quill'), {ssr: false} ); 
 const QuillEdit:React.FC = () => {
