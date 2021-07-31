@@ -38,9 +38,14 @@ const _EditPageWriteLayout = styled.div<HTMLDivElement>`
 ` 
 const _EditPageConfirmLayout = styled.div<HTMLDivElement>`
     width:50%;
+    padding:20px;
     height:calc( 100vh - 58px );
     background: white;
     box-shadow: -5px 0px 5px silver;
+
+    p {
+        margin:0px;
+    }
 `
 
 const _EditActionBarLayout = styled.div<HTMLDivElement>`
@@ -81,8 +86,24 @@ const _EditActionButton = styled.div<_EditActionButtonProps>`
         }
     `}
 `
+interface _EditConfirmTitleLayoutProps {
+    isActive: boolean;
+} 
+const _EditConfirmTitleLayout = styled.div<_EditConfirmTitleLayoutProps>`
+    margin-bottom:20px;
+    border-bottom:1px solid silver;       
+`
+const _EditConfirmContentLayout = styled.div<HTMLDivElement>`
+    img {
+        margin-top: 25px; 
+        margin-bottom:25px;
+        max-height:500px;
+        align-items: center;
+        max-width:100%;
+    }
+`
 
 module.exports = { 
     _EditPageLayout, _EditPageWriteLayout, _EditPageConfirmLayout, _EditActionBarLayout,
-    _EditActionButton
+    _EditActionButton, _EditConfirmTitleLayout, _EditConfirmContentLayout
 }

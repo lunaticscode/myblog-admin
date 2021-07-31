@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import { editContentState } from '../../../recoil/status';
+import { editContentHtmlState } from '../../../recoil/status';
 import { useRecoilState } from 'recoil';
 const Quill = dynamic( async() => await import('react-quill'), {ssr: false} ); 
 const QuillEdit:React.FC = () => {
-    const [ editContentValue, setEditContentValue ] = useRecoilState<string>(editContentState);
-    
+    const [ editContentValue, setEditContentValue ] = useRecoilState<string>(editContentHtmlState);
     const modules = {
         toolbar: [
-          [{ 'header': [ 2, 3, true] }],
+          [{ 'header': [ 1, 2, 3, 0 ] }],
           ['bold', 'italic', 'underline','strike', 'blockquote'],
           [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
           ['link', 'image'],
@@ -19,7 +18,7 @@ const QuillEdit:React.FC = () => {
     }
     
    const formats = [
-        //'font',
+        'font',
         'header',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
         'list', 'bullet', 'indent',
@@ -27,7 +26,9 @@ const QuillEdit:React.FC = () => {
         'align', 'color', 'background',        
     ]  
 
-    const onChangeEditContent = ( html: string ) => { setEditContentValue( html ); }
+    const onChangeEditContent = ( content: string, editor: any ) => { 
+        setEditContentValue( content )
+    }
     return (
         <>
         
@@ -37,10 +38,9 @@ const QuillEdit:React.FC = () => {
           //height: '100%',
               style={{ height:'100%', width:'100%' }}
               theme="snow"
-              onChange={ onChangeEditContent }
+              onChange={ ( content, delta, source, editor ) => onChangeEditContent(content, editor) }
               modules={modules}
               formats={formats}
-               
           />
         </div>
         </>
