@@ -32,7 +32,7 @@ const QuillEdit:React.FC = () => {
     return (
         <>
         
-        <div style={{height:'calc(100vh - 300px)'}}>
+        <div style={{height:'calc(100vh - 400px)'}}>
           <div className={"contentEdit_header"} >Content.</div>
           <Quill
           //height: '100%',

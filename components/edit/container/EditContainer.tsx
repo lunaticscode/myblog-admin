@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import TitleQuillEdit from '../view/article/TitleQuillEdit';
+import TagEdit from '../view/article/TagEdit';
 import QuillEdit from '../view/article/QuillEdit';
 import ConfirmEdit from '../view/article/ConfirmEdit';
 import ActionBar from '../view/article/ActionBar';
-import TitleQuillEdit from '../view/article/TitleQuillEdit';
 import { useRecoilValue, selector } from 'recoil';
 
 const { _EditPageLayout,  _EditPageWriteLayout, _EditPageConfirmLayout,  } = require ('../../../styles/_pages/_edit');
@@ -35,6 +36,7 @@ const EditContainer:React.FC = () => {
           
           <_EditPageWriteLayout>
               <TitleQuillEdit/>
+              <TagEdit/>
               <QuillEdit/>                
           </_EditPageWriteLayout>
 

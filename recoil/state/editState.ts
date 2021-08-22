@@ -10,6 +10,11 @@ export const editContentHtmlState = atom<string>({
     default: "",
 })
 
+export const editTagArrayState = atom<string[]>({
+    key: 'editTag',
+    default: []
+})
+
 export const editResultState = selector({
     key: 'editResult',
     get: ({get}) => {

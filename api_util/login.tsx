@@ -18,6 +18,3 @@ export const adminLogin = ( async ( id: string, pw: string ) => {
     return result;
 });
 
-// module.exports = {  
-//     adminLogin,
-// }

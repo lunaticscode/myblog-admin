@@ -28,6 +28,31 @@ const _EditPageWriteLayout = styled.div<HTMLDivElement>`
         box-shadow: 0px 1px 4px silver;
     }
 
+    div.addedTagList{
+        display: inline-block;
+        margin-left:10px;
+        div.tagItem{
+            display: inline-block;
+            margin: 0px 5px;
+            font-size:13px;
+            color:white;
+            background: black;
+            padding:3px 5px; 
+            border-radius:5px;
+            font-weight: 200;
+            &:hover{ opacity: 0.2; cursor:pointer;}
+        }
+    }
+    input.addTag{
+        border:none;
+        border-bottom:1px solid #eeeeee;
+        width:120px;
+        outline: none;
+        margin-top:20px; margin-left:15px;
+        text-align: left;
+        
+    }
+
     div.ql-toolbar.ql-snow{
         border:none;
         //border-bottom:1px solid #eeeeee;
@@ -91,10 +116,31 @@ interface _EditConfirmTitleLayoutProps {
     isActive: boolean;
 } 
 const _EditConfirmTitleLayout = styled.div<_EditConfirmTitleLayoutProps>`
-    margin-bottom:20px;
-    border-bottom:1px solid silver;       
+    margin-bottom:10px;
+    border-bottom:1px solid #eeeeee;       
+    min-height: 10vh;
 `
+
+const _EditConfirmTagLayout = styled.div<HTMLDivElement>`
+    border-bottom:1px solid #eeeeee;
+    padding-bottom:10px;
+    margin-bottom:15px;
+
+    div.confirmTagItem{
+        display: inline-block;
+        margin-right:5px;
+        background: silver;
+        color:white;
+        padding:3px 5px; 
+        border-radius: 5px;
+    }
+`
+
 const _EditConfirmContentLayout = styled.div<HTMLDivElement>`
+    white-space: nowrap;
+    overflow-y: auto;
+    max-height: 70vh;
+    
     img {
         margin-top: 25px; 
         margin-bottom:25px;
@@ -103,13 +149,12 @@ const _EditConfirmContentLayout = styled.div<HTMLDivElement>`
         max-width:100%;
     }
 `
-
 const _ProfileEditLayout = styled.div<HTMLDivElement>`
     padding:15px;
 `
 
-
 module.exports = { 
     _EditPageLayout, _EditPageWriteLayout, _EditPageConfirmLayout, _EditActionBarLayout,
-    _EditActionButton, _EditConfirmTitleLayout, _EditConfirmContentLayout, _ProfileEditLayout
+    _EditActionButton, _ProfileEditLayout,
+    _EditConfirmTitleLayout, _EditConfirmContentLayout, _EditConfirmTagLayout
 }
